@@ -67,15 +67,27 @@ class AdapterAnswer extends RecyclerView.Adapter<AdapterAnswer.ViewHolder>{
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         //final Currency trenutni = all.getCurrency(position);
-        final Answer trenutni = mArrayList.get(position);
-        final String text = trenutni.text;
-        final String details = trenutni.details;
+        final Answer current = mArrayList.get(position);
+        final String text = current.text;
+        final String details = current.details;
 
 
         holder.tvAnswer.setText(text);
         holder.tvDetails.setText(details);
 
 
+        holder.cbAnswer.setChecked(current.selected);
+
+
+        holder.cbAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (current.selected)
+                    current.selected = false;
+                else
+                    current.selected = true;
+            }
+        });
 
         holder.ly.setOnClickListener(new View.OnClickListener() {
             @Override
