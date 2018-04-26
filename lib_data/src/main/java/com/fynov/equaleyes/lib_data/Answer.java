@@ -10,14 +10,16 @@ public class Answer {
     public String details;
     int time;
     float value;
+    public boolean selected;
     String mod;
 
-    public Answer(int id, String text, String details, int time, float value, String mod) {
+    public Answer(int id, String text, String details, int time, float value, boolean selected, String mod) {
         this.id = id;
         this.text = text;
         this.details = details;
         this.time = time;
         this.value = value;
+        this.selected = selected;
         this.mod = mod;
     }
 }
