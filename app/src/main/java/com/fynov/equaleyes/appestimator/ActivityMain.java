@@ -1,15 +1,30 @@
 package com.fynov.equaleyes.appestimator;
 
+import android.app.VoiceInteractor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.fynov.equaleyes.lib_data.DataAll;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class ActivityMain extends AppCompatActivity{
     ApplicationMy app;
@@ -29,6 +44,40 @@ public class ActivityMain extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ac = this;
+        String URL="http://192.168.0.102:8000/estimateApi/?format=json";
+        final ArrayList<String> list = new ArrayList<String>();
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        JsonArrayRequest objectRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                URL,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                       String test = response.toString();
+                        int len = response.length();
+                        for (int i=0;i<len;i++){
+                            try {
+                                list.add(response.get(i).toString());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        String napaka = "napaka";
+
+                    }
+                }
+        );
+        requestQueue.add(objectRequest);
+
+        //primer list[0]
+        //{"vprasanje":"How big is your app?","odg":[{"odgovor1":"small","odgovor2":"medium","odgovor3":"large","odgovor4":"","odgovor5":"","odgovor6":"","odgovor7":"","odgovor8":"","odgovor9":"","odgovor10":"","platforma":"WEB"}]}
 
         app = (ApplicationMy) getApplication();
         mRecyclerView = (RecyclerView) findViewById(R.id.rvAnswers);
