@@ -8,6 +8,15 @@ import java.util.ArrayList;
 
 public class DataAll {
     ArrayList<Question> questions;
+    String userMail;
+
+    public String getUserMail() {
+        return userMail;
+    }
+
+    public void setUserMail(String userMail) {
+        this.userMail = userMail;
+    }
 
     public DataAll(){
         questions = new ArrayList<>();
@@ -47,13 +56,14 @@ public class DataAll {
         questions.add(new Question(3, "Socila and engagement", answers));
     }
 
-
     public void addQuestion(Question c){
         questions.add(c);
     }
+
     public void dumpQuestions(){
         questions.clear();
     }
+
     public Question getQuestion(int i){
         return  questions.get(i);
     }

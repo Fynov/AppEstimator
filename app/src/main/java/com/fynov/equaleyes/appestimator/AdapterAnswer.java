@@ -21,16 +21,12 @@ import java.util.ArrayList;
 
 class AdapterAnswer extends RecyclerView.Adapter<AdapterAnswer.ViewHolder>{
     Activity ac;
-
     public ArrayList<Answer> mArrayList;
-
 
     public AdapterAnswer(Question question, Activity ac) {
         this.ac = ac;
         mArrayList = question.getAnswers();
     }
-
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -48,7 +44,6 @@ class AdapterAnswer extends RecyclerView.Adapter<AdapterAnswer.ViewHolder>{
             tvDetails = v.findViewById(R.id.tvDetails);
             cbAnswer =  v.findViewById(R.id.cbAnswer);
             ivArrow = v.findViewById(R.id.ivArrow);
-
         }
     }
 
@@ -74,8 +69,6 @@ class AdapterAnswer extends RecyclerView.Adapter<AdapterAnswer.ViewHolder>{
 
         holder.tvAnswer.setText(text);
         holder.tvDetails.setText(details);
-
-
         holder.cbAnswer.setChecked(current.selected);
 
 
@@ -102,15 +95,12 @@ class AdapterAnswer extends RecyclerView.Adapter<AdapterAnswer.ViewHolder>{
                 }
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
         return mArrayList.size();
     }
-
 }
 
 
