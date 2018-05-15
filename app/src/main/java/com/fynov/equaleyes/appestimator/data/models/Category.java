@@ -3,24 +3,24 @@ package com.fynov.equaleyes.appestimator.data.models;
 import java.util.ArrayList;
 
 public class Category {
-    private String id;
+    private String categoryId;
     private String name;
     private Integer time;
     private ArrayList<Feature> features;
 
-    public Category(String id, String name, Integer time, ArrayList<Feature> features) {
-        this.id = id;
+    public Category(String categoryId, String name, Integer time, ArrayList<Feature> features) {
+        this.categoryId = categoryId;
         this.name = name;
         this.time = time;
         this.features = features;
     }
 
-    public String getId() {
-        return id;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCategoryId(String id) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {

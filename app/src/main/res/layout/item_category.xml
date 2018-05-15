@@ -5,12 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="category" type="com.fynov.equaleyes.appestimator.data.models.Category"/>
+        <variable name="handlers" type="com.fynov.equaleyes.appestimator.utils.Handlers"/>
     </data>
+
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/item_category_colour"
-        tools:context=".ui.activities.ActivityEstimator">
+        android:onClick="@{handlers::onClickFriend}">
 
         <TextView
             android:id="@+id/tvCategory"
@@ -33,7 +36,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="16dp"
-            android:text="@{category.time}"
+            android:text='@{Integer.toString(category.time)  + " " + @string/TimeUnit}'
             android:textColor="@android:color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/ivAddCategory"
@@ -48,7 +51,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_add_white_24dp" />
+            app:srcCompat="@drawable/ic_checkbox_unselected_white" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvFeatures"
