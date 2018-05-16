@@ -16,7 +16,7 @@ public class Feature {
         this.time = time;
     }
 
-    public Boolean getSelected() {
+    public Boolean isSelected() {
         return selected;
     }
 

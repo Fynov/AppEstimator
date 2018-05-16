@@ -21,7 +21,7 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder {
 
         int sum = 0;
         for (Feature feat: category.getFeatures()) {
-            if (feat.getSelected())
+            if (feat.isSelected())
                 sum += feat.getTime();
         }
         category.setTime(sum);

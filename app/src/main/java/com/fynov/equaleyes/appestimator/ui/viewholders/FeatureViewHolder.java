@@ -17,16 +17,13 @@ public class FeatureViewHolder extends RecyclerView.ViewHolder  {
     public void bind(@NonNull final Feature feature) {
         mBinding.setFeature(feature);
         mBinding.executePendingBindings();
-        mBinding.ivAddFeature.setSelected(feature.getSelected());
+        mBinding.ivAddFeature.setSelected(feature.isSelected());
 
         mBinding.ivAddFeature.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (feature.getSelected())
-                    feature.setSelected(false);
-                else
-                    feature.setSelected(true);
-                mBinding.ivAddFeature.setSelected(feature.getSelected());
+                feature.setSelected(!feature.isSelected());
+                mBinding.ivAddFeature.setSelected(feature.isSelected());
             }
         });
     }
