@@ -9,4 +9,5 @@
 
     <string name="BackButton">Back</string>
     <string name="NextButton">Next</string>
+    <string name="TimeUnit">Days</string>
 </resources>

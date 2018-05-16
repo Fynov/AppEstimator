@@ -1,4 +1,4 @@
-package com.fynov.equaleyes.appestimator;
+package com.fynov.equaleyes.appestimator.ui.adapters;
 
 import android.app.Activity;
 import android.support.constraint.ConstraintLayout;
@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fynov.equaleyes.appestimator.R;
 import com.fynov.equaleyes.lib_data.Answer;
 import com.fynov.equaleyes.lib_data.Question;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  * Created by Fynov on 12/03/17.
  */
 
-class AdapterAnswer extends RecyclerView.Adapter<AdapterAnswer.ViewHolder>{
+public class AdapterAnswer extends RecyclerView.Adapter<AdapterAnswer.ViewHolder>{
     Activity ac;
     public ArrayList<Answer> mArrayList;
 

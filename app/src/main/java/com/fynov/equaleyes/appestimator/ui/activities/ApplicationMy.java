@@ -1,4 +1,4 @@
-package com.fynov.equaleyes.appestimator;
+package com.fynov.equaleyes.appestimator.ui.activities;
 
 import android.app.Application;
 import android.content.Context;
