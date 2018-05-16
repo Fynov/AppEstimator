@@ -1,4 +1,4 @@
-package com.fynov.equaleyes.appestimator;
+package com.fynov.equaleyes.appestimator.viewmodels;
 
 import android.arch.lifecycle.ViewModel;
 

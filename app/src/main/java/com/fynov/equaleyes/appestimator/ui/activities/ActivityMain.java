@@ -1,8 +1,10 @@
 
-package com.fynov.equaleyes.appestimator;
+package com.fynov.equaleyes.appestimator.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.fynov.equaleyes.appestimator.R;
 
 public class ActivityMain extends AppCompatActivity{
 
