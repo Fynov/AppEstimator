@@ -8,9 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.fynov.equaleyes.appestimator.R;
+import com.fynov.equaleyes.appestimator.data.ApplicationMy;
 import com.fynov.equaleyes.appestimator.data.models.Category;
 import com.fynov.equaleyes.appestimator.databinding.ActivityEstimatorBinding;
 import com.fynov.equaleyes.appestimator.ui.adapters.CategoryAdapter;
@@ -23,10 +23,13 @@ public class ActivityEstimator extends AppCompatActivity {
     private EstimatorViewModel mEstimatorViewModel;
     private RecyclerView.LayoutManager mLayoutManagaer;
     CategoryAdapter mAdapter;
+    ApplicationMy app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        app = (ApplicationMy) getApplication();
 
         mEstimatorViewModel = ViewModelProviders.of(this).get(EstimatorViewModel.class);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_estimator);
@@ -43,6 +46,7 @@ public class ActivityEstimator extends AppCompatActivity {
         final Observer<ArrayList<Category>> categoryObserver = new Observer<ArrayList<Category>>() {
             @Override
             public void onChanged(@Nullable ArrayList<Category> categories) {
+                app.allCategories = categories;
                 mAdapter.setItems(categories);
             }
         };

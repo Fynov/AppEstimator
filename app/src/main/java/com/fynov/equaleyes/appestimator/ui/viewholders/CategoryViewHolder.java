@@ -18,7 +18,6 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(@NonNull Category category) {
-
         int sum = 0;
         for (Feature feat: category.getFeatures()) {
             if (feat.isSelected())

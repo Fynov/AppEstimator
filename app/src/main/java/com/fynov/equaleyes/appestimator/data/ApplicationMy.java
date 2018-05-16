@@ -4,7 +4,10 @@ import android.app.Application;
 import android.content.Context;
 
 
-import com.fynov.equaleyes.lib_data.DataAll;
+import com.fynov.equaleyes.appestimator.data.models.Category;
+import com.fynov.equaleyes.appestimator.data.models.DataAll;
+
+import java.util.ArrayList;
 
 
 /**
@@ -12,13 +15,12 @@ import com.fynov.equaleyes.lib_data.DataAll;
  */
 
 public class ApplicationMy extends Application {
-    public DataAll all;
-    public Context ac;
+    public ArrayList<Category> allCategories;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        ac=this;
+        allCategories=new ArrayList<>();
     }
 }
 

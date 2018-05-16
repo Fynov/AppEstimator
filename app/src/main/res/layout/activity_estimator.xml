@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="data" type="com.fynov.equaleyes.lib_data.DataAll"/>
+        <variable name="data" type="com.fynov.equaleyes.appestimator.data.models.DataAll"/>
     </data>
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
