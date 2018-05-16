@@ -1,4 +1,4 @@
-package com.fynov.equaleyes.appestimator.ui.activities;
+package com.fynov.equaleyes.appestimator.data;
 
 import android.app.Application;
 import android.content.Context;
@@ -12,8 +12,8 @@ import com.fynov.equaleyes.lib_data.DataAll;
  */
 
 public class ApplicationMy extends Application {
-    DataAll all;
-    Context ac;
+    public DataAll all;
+    public Context ac;
 
     @Override
     public void onCreate() {

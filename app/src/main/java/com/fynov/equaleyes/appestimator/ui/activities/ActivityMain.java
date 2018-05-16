@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.fynov.equaleyes.appestimator.R;
+import com.fynov.equaleyes.appestimator.data.ApplicationMy;
 import com.fynov.equaleyes.appestimator.ui.adapters.AdapterAnswer;
 import com.fynov.equaleyes.lib_data.Answer;
 import com.fynov.equaleyes.lib_data.DataAll;
