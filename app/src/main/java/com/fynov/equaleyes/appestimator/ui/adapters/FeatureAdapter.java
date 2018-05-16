@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.fynov.equaleyes.appestimator.R;
 import com.fynov.equaleyes.appestimator.data.models.Feature;
 import com.fynov.equaleyes.appestimator.databinding.ItemFeatureBinding;
+import com.fynov.equaleyes.appestimator.ui.viewholders.FeatureViewHolder;
 
 import java.util.ArrayList;
 
@@ -19,55 +20,22 @@ import java.util.ArrayList;
  * Created by Fynov on 12/03/17.
  */
 
-public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.ViewHolder>{
-    Activity ac;
+public class FeatureAdapter extends RecyclerView.Adapter<FeatureViewHolder>{
     public ArrayList<Feature> mArrayList;
 
-
-    public FeatureAdapter(ArrayList<Feature> features, Activity ac) {
-        this.ac = ac;
+    public FeatureAdapter(ArrayList<Feature> features) {
         mArrayList = features;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private ItemFeatureBinding mBinding;
-        public ViewHolder(ItemFeatureBinding binding) {
-            super(binding.getRoot());
-            mBinding = binding;
-        }
-
-        public void bind(@NonNull final Feature feature) {
-            mBinding.setFeature(feature);
-            mBinding.executePendingBindings();
-            if (feature.getSelected())
-                mBinding.ivAddFeature.setImageDrawable(ResourcesCompat.getDrawable(ac.getResources(), R.drawable.ic_checkbox_selected_blue, null));
-            else
-                mBinding.ivAddFeature.setImageDrawable(ResourcesCompat.getDrawable(ac.getResources(), R.drawable.ic_checkbox_unselected_blue, null));
-
-            mBinding.ivAddFeature.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (feature.getSelected()){
-                        feature.setSelected(false);
-                        mBinding.ivAddFeature.setImageDrawable(ResourcesCompat.getDrawable(ac.getResources(), R.drawable.ic_checkbox_unselected_blue, null));
-                    }else {
-                        feature.setSelected(true);
-                        mBinding.ivAddFeature.setImageDrawable(ResourcesCompat.getDrawable(ac.getResources(), R.drawable.ic_checkbox_selected_blue, null));
-                    }
-                }
-            });
-        }
-    }
-
     @Override
-    public FeatureAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FeatureViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         ItemFeatureBinding binding = DataBindingUtil.inflate(inflater, R.layout.item_feature, parent, false);
-        return new ViewHolder(binding);
+        return new FeatureViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(FeatureViewHolder holder, int position) {
         Feature feature = mArrayList.get(position);
         holder.bind(feature);
     }

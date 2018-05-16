@@ -55,7 +55,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_checkbox_unselected_blue"/>
+            app:srcCompat="@drawable/selector_checkbox_feature"/>
             <!--android:onClick="@{handler::onClickCheckBox}"-->
     </android.support.constraint.ConstraintLayout>
 </layout>

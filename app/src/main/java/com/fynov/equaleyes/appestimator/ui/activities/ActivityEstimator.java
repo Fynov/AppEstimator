@@ -23,18 +23,15 @@ public class ActivityEstimator extends AppCompatActivity {
     private EstimatorViewModel mEstimatorViewModel;
     private RecyclerView.LayoutManager mLayoutManagaer;
     CategoryAdapter mAdapter;
-    ActivityEstimator ac;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_estimator);
 
-        ac = this;
         mLayoutManagaer = new LinearLayoutManager(this);
         mEstimatorViewModel = ViewModelProviders.of(this).get(EstimatorViewModel.class);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_estimator);
-
+        mAdapter = new CategoryAdapter(new ArrayList<Category>());
         subscribe();
     }
 
@@ -42,10 +39,9 @@ public class ActivityEstimator extends AppCompatActivity {
         final Observer<ArrayList<Category>> categoryObserver = new Observer<ArrayList<Category>>() {
             @Override
             public void onChanged(@Nullable ArrayList<Category> categories) {
-                mAdapter = new CategoryAdapter(categories, ac);
+                mAdapter.setItems(categories);
                 binding.rvCategories.setLayoutManager(mLayoutManagaer);
                 binding.rvCategories.setAdapter(mAdapter);
-                Log.d("Live Data", "SUCCESS");
             }
         };
         mEstimatorViewModel.getCategoryList().observe(this, categoryObserver);
