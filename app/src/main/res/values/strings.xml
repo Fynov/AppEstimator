@@ -10,4 +10,11 @@
     <string name="BackButton">Back</string>
     <string name="NextButton">Next</string>
     <string name="TimeUnit">Days</string>
+    <string name="RoughtEstimates">All estimates are a rough estimation for more details estimation please contact our sales department</string>
+    <string name="DescCoinbase">Image for coinbase</string>
+    <string name="DescRevolut">Image for Revoulut</string>
+    <string name="DescSnapchat">Image for Snapchat</string>
+    <string name="DescScratch">Image for starting from scratch</string>
+    <string name="DescLogo">Image of company logo</string>
+    <string name="DescPowered">Image powered by company</string>
 </resources>
