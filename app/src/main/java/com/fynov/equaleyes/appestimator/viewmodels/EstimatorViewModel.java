@@ -28,13 +28,13 @@ public class EstimatorViewModel extends ViewModel {
                 ArrayList<Feature> featureList = new ArrayList<>();
 
                 featureList.add(new Feature("1", "Light", "IDK", 10, 2));
-                featureList.add(new Feature("2", "Heavy", "IDK", 20, 4));
+                featureList.add(new Feature("2", "Heavy", "IDK", 20, 4, true));
                 Category cat = new Category("1", "UI", 3, featureList);
                 catList.add(cat);
 
                 featureList = new ArrayList<>();
                 featureList.add(new Feature("1", "Quick", "IDK", 10, 2));
-                featureList.add(new Feature("2", "Secure", "IDK", 20, 4));
+                featureList.add(new Feature("2", "Secure", "IDK", 20, 4, true));
                 cat = new Category("2", "Login", 2, featureList);
                 catList.add(cat);
 
@@ -45,7 +45,7 @@ public class EstimatorViewModel extends ViewModel {
                 catList.add(cat);
 
                 featureList = new ArrayList<>();
-                featureList.add(new Feature("1", "Email", "IDK", 10, 2));
+                featureList.add(new Feature("1", "Email", "IDK", 10, 2, true));
                 featureList.add(new Feature("2", "OTP", "IDK", 20, 4));
                 cat = new Category("4", "Auth", 1, featureList);
                 catList.add(cat);

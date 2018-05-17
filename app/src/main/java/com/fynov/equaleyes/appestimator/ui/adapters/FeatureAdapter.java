@@ -13,6 +13,7 @@ import com.fynov.equaleyes.appestimator.R;
 import com.fynov.equaleyes.appestimator.data.models.Feature;
 import com.fynov.equaleyes.appestimator.databinding.ItemFeatureBinding;
 import com.fynov.equaleyes.appestimator.ui.viewholders.FeatureViewHolder;
+import com.fynov.equaleyes.appestimator.utils.Callback;
 
 import java.util.ArrayList;
 
@@ -22,9 +23,11 @@ import java.util.ArrayList;
 
 public class FeatureAdapter extends RecyclerView.Adapter<FeatureViewHolder>{
     public ArrayList<Feature> mArrayList;
+    Callback callback;
 
-    public FeatureAdapter(ArrayList<Feature> features) {
+    public FeatureAdapter(ArrayList<Feature> features, Callback callback) {
         mArrayList = features;
+        this.callback = callback;
     }
 
     @Override
@@ -37,7 +40,7 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureViewHolder>{
     @Override
     public void onBindViewHolder(FeatureViewHolder holder, int position) {
         Feature feature = mArrayList.get(position);
-        holder.bind(feature);
+        holder.bind(feature, callback);
     }
 
     @Override

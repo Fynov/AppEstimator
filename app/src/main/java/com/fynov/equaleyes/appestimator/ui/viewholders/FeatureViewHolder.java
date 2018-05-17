@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.fynov.equaleyes.appestimator.data.models.Feature;
 import com.fynov.equaleyes.appestimator.databinding.ItemFeatureBinding;
+import com.fynov.equaleyes.appestimator.utils.Callback;
 
 public class FeatureViewHolder extends RecyclerView.ViewHolder  {
     private ItemFeatureBinding mBinding;
@@ -14,16 +15,17 @@ public class FeatureViewHolder extends RecyclerView.ViewHolder  {
         mBinding = binding;
     }
 
-    public void bind(@NonNull final Feature feature) {
+    public void bind(@NonNull final Feature feature, final Callback callback) {
         mBinding.setFeature(feature);
         mBinding.executePendingBindings();
         mBinding.ivAddFeature.setSelected(feature.isSelected());
-
+        this.getAdapterPosition();
         mBinding.ivAddFeature.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 feature.setSelected(!feature.isSelected());
                 mBinding.ivAddFeature.setSelected(feature.isSelected());
+                callback.onFeatureSelectionChanged();
             }
         });
     }
