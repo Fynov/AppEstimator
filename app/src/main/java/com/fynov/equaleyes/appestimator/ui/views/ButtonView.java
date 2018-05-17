@@ -15,7 +15,6 @@ import com.fynov.equaleyes.appestimator.R;
 public class ButtonView extends ConstraintLayout {
     View rootView;
     TextView tvCalculate;
-    ImageView ivButton;
     ProgressBar pbLoading;
 
 
@@ -30,7 +29,7 @@ public class ButtonView extends ConstraintLayout {
     }
     private void init(Context context) {
         rootView = inflate(context, R.layout.button_view, this);
-        tvCalculate = (TextView) rootView.findViewById(R.id.tvcalculate);
+        tvCalculate = rootView.findViewById(R.id.tvcalculate);
         pbLoading = rootView.findViewById(R.id.pbButton);
 
         rootView.setOnClickListener(new View.OnClickListener() {
