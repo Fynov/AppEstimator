@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.ActivityMain"></activity>
+        <activity android:name=".ui.activities.ActivityMain" />
     </application>
 
 </manifest>
