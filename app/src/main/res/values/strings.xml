@@ -17,4 +17,7 @@
     <string name="DescScratch">Image for starting from scratch</string>
     <string name="DescLogo">Image of company logo</string>
     <string name="DescPowered">Image powered by company</string>
+    <string name="disclaimer">Please note, all cost estimates are intended to be indicative of development costs and timescales only and are exclusive of all hosting costs, paid services or purchased assets of any kind. All prices are in £ and inclusive of sales tax.</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="buttonText">Calculate</string>
 </resources>
