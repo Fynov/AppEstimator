@@ -20,7 +20,7 @@ public class FeatureViewHolder extends RecyclerView.ViewHolder  {
         mBinding.executePendingBindings();
         mBinding.ivAddFeature.setSelected(feature.isSelected());
         this.getAdapterPosition();
-        mBinding.ivAddFeature.setOnClickListener(new View.OnClickListener() {
+        mBinding.constraintlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 feature.setSelected(!feature.isSelected());

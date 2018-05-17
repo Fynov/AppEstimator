@@ -13,6 +13,7 @@ import com.fynov.equaleyes.appestimator.data.models.Category;
 import com.fynov.equaleyes.appestimator.data.models.Feature;
 import com.fynov.equaleyes.appestimator.databinding.ItemCategoryBinding;
 import com.fynov.equaleyes.appestimator.ui.viewholders.CategoryViewHolder;
+import com.fynov.equaleyes.appestimator.utils.Callback;
 
 import java.util.ArrayList;
 
@@ -21,11 +22,12 @@ import java.util.ArrayList;
  */
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
-    public ArrayList<Category> mArrayList;
+    private ArrayList<Category> mArrayList;
+    private Callback categoryCallback;
 
-
-    public CategoryAdapter(ArrayList<Category> categories) {
+    public CategoryAdapter(ArrayList<Category> categories, Callback categoryCallback) {
         mArrayList = categories;
+        this.categoryCallback = categoryCallback;
     }
 
     @Override
@@ -39,7 +41,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
     public void onBindViewHolder(CategoryViewHolder holder, int position) {
         //final Currency trenutni = all.getCurrency(position);
         Category category = mArrayList.get(position);
-        holder.bind(category);
+        holder.bind(category, categoryCallback);
     }
 
     @Override

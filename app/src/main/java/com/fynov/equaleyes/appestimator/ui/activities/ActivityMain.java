@@ -7,8 +7,6 @@ import android.os.Bundle;
 import com.fynov.equaleyes.appestimator.R;
 
 public class ActivityMain extends AppCompatActivity{
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

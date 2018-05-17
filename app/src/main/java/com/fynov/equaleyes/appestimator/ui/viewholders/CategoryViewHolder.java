@@ -13,17 +13,18 @@ import com.fynov.equaleyes.appestimator.utils.Callback;
 
 public class CategoryViewHolder extends RecyclerView.ViewHolder {
     private ItemCategoryBinding mBinding;
-    FeatureAdapter mAdapter;
+    private FeatureAdapter mAdapter;
     public CategoryViewHolder(ItemCategoryBinding binding) {
         super(binding.getRoot());
         mBinding = binding;
     }
 
-    public void bind(@NonNull final Category category) {
+    public void bind(@NonNull final Category category, final Callback categoryCallback) {
         Callback callback = new Callback() {
             @Override
             public void onFeatureSelectionChanged() {
                 updateView(category);
+                categoryCallback.onFeatureSelectionChanged();
             }
         };
 
@@ -45,7 +46,7 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void updateView(Category category){
+    private void updateView(Category category){
         int sum = 0;
         boolean selected = false;
         for (Feature feat: category.getFeatures()) {

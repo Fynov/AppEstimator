@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AppEstimator.iml" filepath="$PROJECT_DIR$/AppEstimator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_data/lib_data.iml" filepath="$PROJECT_DIR$/lib_data/lib_data.iml" />
     </modules>
   </component>
 </project>
