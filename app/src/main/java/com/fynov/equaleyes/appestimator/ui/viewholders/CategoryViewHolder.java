@@ -3,11 +3,13 @@ package com.fynov.equaleyes.appestimator.ui.viewholders;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.fynov.equaleyes.appestimator.data.models.Category;
 import com.fynov.equaleyes.appestimator.data.models.Feature;
 import com.fynov.equaleyes.appestimator.databinding.ItemCategoryBinding;
 import com.fynov.equaleyes.appestimator.ui.adapters.FeatureAdapter;
+import com.fynov.equaleyes.appestimator.utils.Callback;
 
 public class CategoryViewHolder extends RecyclerView.ViewHolder {
     private ItemCategoryBinding mBinding;
@@ -17,19 +19,43 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder {
         mBinding = binding;
     }
 
-    public void bind(@NonNull Category category) {
-        int sum = 0;
-        for (Feature feat: category.getFeatures()) {
-            if (feat.isSelected())
-                sum += feat.getTime();
-        }
-        category.setTime(sum);
+    public void bind(@NonNull final Category category) {
+        Callback callback = new Callback() {
+            @Override
+            public void onFeatureSelectionChanged() {
+                updateView(category);
+            }
+        };
 
-        mBinding.setCategory(category);
+        updateView(category);
         mBinding.executePendingBindings();
 
-        mAdapter = new FeatureAdapter(category.getFeatures());
+        mAdapter = new FeatureAdapter(category.getFeatures(), callback);
         mBinding.rvFeatures.setLayoutManager(new LinearLayoutManager(mBinding.getRoot().getContext()));
         mBinding.rvFeatures.setAdapter(mAdapter);
+
+        mBinding.constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mBinding.rvFeatures.getVisibility() == View.VISIBLE)
+                    mBinding.rvFeatures.setVisibility(View.GONE);
+                else
+                    mBinding.rvFeatures.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    public void updateView(Category category){
+        int sum = 0;
+        boolean selected = false;
+        for (Feature feat: category.getFeatures()) {
+            if (feat.isSelected()){
+                sum += feat.getTime();
+                selected = true;
+            }
+        }
+        mBinding.ivAddCategory.setSelected(selected);
+        category.setTime(sum);
+        mBinding.setCategory(category);
     }
 }

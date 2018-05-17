@@ -15,6 +15,14 @@ public class Feature {
         this.price = price;
         this.time = time;
     }
+    public Feature(String id, String name, String description, Integer price, Integer time, boolean selected) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.time = time;
+        this.selected = selected;
+    }
 
     public Boolean isSelected() {
         return selected;
