@@ -1,11 +1,15 @@
 package com.fynov.equaleyes.appestimator.data.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class Category {
     private String categoryId;
+    @SerializedName("feature_name")
     private String name;
     private Integer time;
+    @SerializedName("feature")
     private ArrayList<Feature> features;
 
     public Category(String categoryId, String name, Integer time, ArrayList<Feature> features) {
@@ -15,12 +19,17 @@ public class Category {
         this.features = features;
     }
 
+    public Category(String name, ArrayList<Feature> features) {
+        this.name = name;
+        this.features = features;
+    }
+
     public String getCategoryId() {
         return categoryId;
     }
 
     public void setCategoryId(String id) {
-        this.categoryId = categoryId;
+        this.categoryId = id;
     }
 
     public String getName() {
