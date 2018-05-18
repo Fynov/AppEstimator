@@ -1,11 +1,9 @@
 package com.fynov.equaleyes.appestimator.data;
 
 import android.app.Application;
-import android.content.Context;
 
 
 import com.fynov.equaleyes.appestimator.data.models.Category;
-import com.fynov.equaleyes.appestimator.data.models.DataAll;
 
 import java.util.ArrayList;
 
