@@ -20,12 +20,13 @@ import com.fynov.equaleyes.appestimator.utils.Callback;
 public class TemplateViewHolder extends RecyclerView.ViewHolder {
 
     public TextView texView;
+    public ImageView imgView;
     private ItemTemplateBinding mBinding;
 
     public TemplateViewHolder(ItemTemplateBinding binding) {
         super(binding.getRoot());
         mBinding = binding;
-        texView = binding.textUrl;
+        imgView = binding.imageUrl;
     }
 
     public void bind(@NonNull final Template template) {

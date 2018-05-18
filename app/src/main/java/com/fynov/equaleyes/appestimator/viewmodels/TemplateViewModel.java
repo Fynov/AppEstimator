@@ -15,10 +15,10 @@ public class TemplateViewModel extends ViewModel {
     public TemplateViewModel(){
         ArrayList<Template> templateList = new ArrayList<>();
 
-        templateList.add(new Template("coinbase"));
-        templateList.add(new Template("revolut"));
-        templateList.add(new Template("snapchat"));
-        templateList.add(new Template("scratch"));
+        templateList.add(new Template("https://i.imgur.com/8hy9TrW.png"));
+        templateList.add(new Template("https://i.imgur.com/y4nuRmd.png"));
+        templateList.add(new Template("https://i.imgur.com/poOrRBG.png"));
+        templateList.add(new Template("https://i.imgur.com/udWLorv.png"));
 
         mTemplateList.setValue(templateList);
 
