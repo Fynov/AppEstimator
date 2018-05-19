@@ -2,17 +2,18 @@ package com.fynov.equaleyes.appestimator.data.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Category {
     private String categoryId;
     @SerializedName("feature_name")
     private String name;
-    private Integer time;
+    private Double time;
     @SerializedName("feature")
     private ArrayList<Feature> features;
 
-    public Category(String categoryId, String name, Integer time, ArrayList<Feature> features) {
+    public Category(String categoryId, String name, Double time, ArrayList<Feature> features) {
         this.categoryId = categoryId;
         this.name = name;
         this.time = time;
@@ -32,6 +33,12 @@ public class Category {
         this.categoryId = id;
     }
 
+    public String timeToString() {
+        DecimalFormat format = new DecimalFormat();
+        format.setDecimalSeparatorAlwaysShown(false);
+        return format.format(time);
+    }
+
     public String getName() {
         return name;
     }
@@ -40,11 +47,11 @@ public class Category {
         this.name = name;
     }
 
-    public Integer getTime() {
+    public Double getTime() {
         return time;
     }
 
-    public void setTime(Integer time) {
+    public void setTime(Double time) {
         this.time = time;
     }
 

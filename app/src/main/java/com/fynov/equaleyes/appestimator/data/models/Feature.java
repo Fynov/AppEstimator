@@ -2,6 +2,7 @@ package com.fynov.equaleyes.appestimator.data.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Feature {
@@ -11,12 +12,12 @@ public class Feature {
     private String description;
     private Integer price;
     @SerializedName("time")
-    private Integer time;
+    private Double time;
     private Boolean selected = false;
     @SerializedName("template")
     private List<Template>template;
 
-    public Feature(String id, String name, String description, Integer price, Integer time) {
+    public Feature(String id, String name, String description, Integer price, Double time) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -24,7 +25,7 @@ public class Feature {
         this.time = time;
     }
 
-    public Feature(String id, String name, String description, Integer price, Integer time, Boolean selected) {
+    public Feature(String id, String name, String description, Integer price, Double time, Boolean selected) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -73,11 +74,11 @@ public class Feature {
         this.price = price;
     }
 
-    public Integer getTime() {
+    public Double getTime() {
         return time;
     }
 
-    public void setTime(Integer time) {
+    public void setTime(Double time) {
         this.time = time;
     }
 
@@ -87,5 +88,11 @@ public class Feature {
 
     public void setTemplate(List<Template> template) {
         this.template = template;
+    }
+
+    public String timeToString() {
+        DecimalFormat format = new DecimalFormat();
+        format.setDecimalSeparatorAlwaysShown(false);
+        return format.format(time);
     }
 }
