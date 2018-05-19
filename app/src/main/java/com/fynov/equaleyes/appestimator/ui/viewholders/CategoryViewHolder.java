@@ -47,7 +47,7 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void updateView(Category category){
-        int sum = 0;
+        Double sum = 0.0;
         boolean selected = false;
         for (Feature feat: category.getFeatures()) {
             if (feat.isSelected()){

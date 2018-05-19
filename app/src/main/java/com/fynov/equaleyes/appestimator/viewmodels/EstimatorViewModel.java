@@ -28,50 +28,31 @@ public class EstimatorViewModel extends ViewModel {
         return mCategoryList;
     }
 
-    public void makeAPIcall(String templateName){
+    public void makeAPIcall(final String templateName){
         final ArrayList<Category> catList = new ArrayList<>();
         service = RetrofitClient.getClient("http://estimateapi.pythonanywhere.com/").create(APIService.class);
 
-
-        if (templateName.isEmpty())
-            service.getFeatures()
-                    .enqueue(new Callback<List<Category>>() {
-                        @Override
-                        public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-                            catList.addAll(response.body());
-                            for (Category cat: catList) {
-                                cat.setTime(0);
-                                for (Feature feat: cat.getFeatures()) {
+        service.getFeatures(templateName)
+                .enqueue(new Callback<List<Category>>() {
+                    @Override
+                    public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                        catList.addAll(response.body());
+                        for (Category cat: catList) {
+                            cat.setTime(0.0);
+                            for (Feature feat: cat.getFeatures()) {
+                                if (templateName.isEmpty())
                                     feat.setSelected(false);
-                                }
-                            }
-                            mCategoryList.setValue(catList);
-                        }
-
-                        @Override
-                        public void onFailure(Call<List<Category>> call, Throwable t) {
-                            //TODO: Error message, don't know what view to input for snackbar. Snackbar.make(, "API is unavailible.", Snackbar.LENGTH_SHORT);
-                        }
-                    });
-        else
-            service.getFeatures(templateName)
-                    .enqueue(new Callback<List<Category>>() {
-                        @Override
-                        public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-                            catList.addAll(response.body());
-                            for (Category cat: catList) {
-                                cat.setTime(0);
-                                for (Feature feat: cat.getFeatures()) {
+                                else
                                     feat.setSelected(feat.getTemplate().get(0).isSelected());
-                                }
                             }
-                            mCategoryList.setValue(catList);
                         }
+                        mCategoryList.setValue(catList);
+                    }
 
-                        @Override
-                        public void onFailure(Call<List<Category>> call, Throwable t) {
-                            //TODO: Error message, don't know what view to input for snackbar. Snackbar.make(, "API is unavailible.", Snackbar.LENGTH_SHORT);
-                        }
-                    });
+                    @Override
+                    public void onFailure(Call<List<Category>> call, Throwable t) {
+                        //TODO: Error message, don't know what view to input for snackbar. Snackbar.make(, "API is unavailible.", Snackbar.LENGTH_SHORT);
+                    }
+                });
     }
 }

@@ -26,6 +26,7 @@ import com.fynov.equaleyes.appestimator.ui.adapters.CategoryAdapter;
 import com.fynov.equaleyes.appestimator.utils.Callback;
 import com.fynov.equaleyes.appestimator.viewmodels.EstimatorViewModel;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class    ActivityEstimator extends AppCompatActivity {
@@ -41,7 +42,6 @@ public class    ActivityEstimator extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         mEstimatorViewModel = ViewModelProviders.of(this).get(EstimatorViewModel.class);
         mEstimatorViewModel.makeAPIcall(getIntent().getStringExtra("template_name"));
@@ -82,7 +82,7 @@ public class    ActivityEstimator extends AppCompatActivity {
     }
 
     public void updateView(ArrayList<Category> categoryList){
-        int sum = 0;
+        Double sum = 0.0;
         for (Category cat: categoryList) {
             for (Feature feat: cat.getFeatures()) {
                 if (feat.isSelected()){
@@ -90,6 +90,9 @@ public class    ActivityEstimator extends AppCompatActivity {
                 }
             }
         }
-        tvTotal.setText(Integer.toString(sum) + getResources().getString(R.string.TimeUnit));
+
+        DecimalFormat format = new DecimalFormat();
+        format.setDecimalSeparatorAlwaysShown(false);
+        tvTotal.setText(format.format(sum) + " " +getResources().getString(R.string.TimeUnit));
     }
 }
