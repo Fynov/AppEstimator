@@ -1,10 +1,14 @@
 package com.fynov.equaleyes.appestimator.data.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Feature {
     private String id;
+    @SerializedName("name")
     private String name;
     private String description;
     private Integer price;
+    @SerializedName("time")
     private Integer time;
     private Boolean selected = false;
 

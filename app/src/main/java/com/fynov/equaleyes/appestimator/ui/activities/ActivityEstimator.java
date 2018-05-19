@@ -11,43 +11,59 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.view.Window;
+import android.widget.TextView;
 
 import com.fynov.equaleyes.appestimator.R;
 import com.fynov.equaleyes.appestimator.data.ApplicationMy;
 import com.fynov.equaleyes.appestimator.data.models.Category;
+import com.fynov.equaleyes.appestimator.data.models.Feature;
 import com.fynov.equaleyes.appestimator.databinding.ActivityEstimatorBinding;
 import com.fynov.equaleyes.appestimator.ui.adapters.CategoryAdapter;
+import com.fynov.equaleyes.appestimator.utils.Callback;
 import com.fynov.equaleyes.appestimator.viewmodels.EstimatorViewModel;
 
 import java.util.ArrayList;
 
-public class ActivityEstimator extends AppCompatActivity {
+public class    ActivityEstimator extends AppCompatActivity {
     private ActivityEstimatorBinding binding;
     private EstimatorViewModel mEstimatorViewModel;
     private RecyclerView.LayoutManager mLayoutManagaer;
     CategoryAdapter mAdapter;
+    ArrayList<Category> categoryArrayList;
+
+    TextView tvTotal;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         mEstimatorViewModel = ViewModelProviders.of(this).get(EstimatorViewModel.class);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_estimator);
-
         mLayoutManagaer = new LinearLayoutManager(this);
-        mAdapter = new CategoryAdapter(new ArrayList<Category>());
+
+        Callback categoryCallback = new Callback() {
+            @Override
+            public void onFeatureSelectionChanged() {
+                updateView(categoryArrayList);
+            }
+        };
+        mAdapter = new CategoryAdapter(new ArrayList<Category>(), categoryCallback);
 
         binding.rvCategories.setLayoutManager(mLayoutManagaer);
         binding.rvCategories.setAdapter(mAdapter);
         binding.toolbar.setTitle(R.string.app_name);
+        tvTotal = binding.getRoot().findViewById(R.id.tvTotal);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             binding.textView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-            binding.textView.setGravity(Gravity.LEFT);
+            binding.textView.setGravity(Gravity.START);
         }
-
         subscribe();
     }
 
@@ -55,9 +71,23 @@ public class ActivityEstimator extends AppCompatActivity {
         final Observer<ArrayList<Category>> categoryObserver = new Observer<ArrayList<Category>>() {
             @Override
             public void onChanged(@Nullable ArrayList<Category> categories) {
-                mAdapter.setItems(categories);
+                categoryArrayList = categories;
+                mAdapter.setItems(categoryArrayList);
+                updateView(categoryArrayList);
             }
         };
         mEstimatorViewModel.getCategoryList().observe(this, categoryObserver);
+    }
+
+    public void updateView(ArrayList<Category> categoryList){
+        int sum = 0;
+        for (Category cat: categoryList) {
+            for (Feature feat: cat.getFeatures()) {
+                if (feat.isSelected()){
+                    sum += feat.getTime();
+                }
+            }
+        }
+        tvTotal.setText(Integer.toString(sum) + " Days");
     }
 }

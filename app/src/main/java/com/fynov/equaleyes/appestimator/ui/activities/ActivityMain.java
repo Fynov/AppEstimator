@@ -32,7 +32,7 @@ public class ActivityMain extends AppCompatActivity{
     private TemplateViewModel mTemplateViewModel;
     private RecyclerView.LayoutManager mLayoutManagaer;
     TemplateAdapter mAdapter;
-
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

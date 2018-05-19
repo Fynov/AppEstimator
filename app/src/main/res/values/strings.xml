@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppEstimator</string>
+    <string name="app_name">EE Estimator</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -7,8 +7,6 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
-    <string name="BackButton">Back</string>
-    <string name="NextButton">Next</string>
     <string name="TimeUnit">Days</string>
     <string name="RoughtEstimates">All estimates are a rough estimation for more details estimation please contact our sales department</string>
     <string name="DescCoinbase">Image for coinbase</string>
@@ -19,5 +17,8 @@
     <string name="DescPowered">Image powered by company</string>
     <string name="disclaimer">Please note, all cost estimates are intended to be indicative of development costs and timescales only and are exclusive of all hosting costs, paid services or purchased assets of any kind. All prices are in £ and inclusive of sales tax.</string>
     <string name="title_activity_main2">Main2Activity</string>
+
     <string name="buttonText">Calculate</string>
+    <string name="button_background">Button orange background</string>
+    <string name="total">Total Days</string>
 </resources>
