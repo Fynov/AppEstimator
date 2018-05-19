@@ -2,6 +2,8 @@ package com.fynov.equaleyes.appestimator.data.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Feature {
     private String id;
     @SerializedName("name")
@@ -11,6 +13,8 @@ public class Feature {
     @SerializedName("time")
     private Integer time;
     private Boolean selected = false;
+    @SerializedName("template")
+    private List<Template>template;
 
     public Feature(String id, String name, String description, Integer price, Integer time) {
         this.id = id;
@@ -75,5 +79,13 @@ public class Feature {
 
     public void setTime(Integer time) {
         this.time = time;
+    }
+
+    public List<Template> getTemplate() {
+        return template;
+    }
+
+    public void setTemplate(List<Template> template) {
+        this.template = template;
     }
 }

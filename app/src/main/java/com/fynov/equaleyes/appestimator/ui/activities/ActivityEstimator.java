@@ -44,6 +44,8 @@ public class    ActivityEstimator extends AppCompatActivity {
 
 
         mEstimatorViewModel = ViewModelProviders.of(this).get(EstimatorViewModel.class);
+        mEstimatorViewModel.makeAPIcall(getIntent().getStringExtra("template_name"));
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_estimator);
         mLayoutManagaer = new LinearLayoutManager(this);
 
@@ -88,6 +90,6 @@ public class    ActivityEstimator extends AppCompatActivity {
                 }
             }
         }
-        tvTotal.setText(Integer.toString(sum) + " Days");
+        tvTotal.setText(Integer.toString(sum) + getResources().getString(R.string.TimeUnit));
     }
 }
