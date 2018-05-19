@@ -1,14 +1,20 @@
 package com.fynov.equaleyes.appestimator.data.models;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.google.gson.annotations.SerializedName;
+
 
 public class Template {
-    private int ImageID;
+    @SerializedName("template_name")
+    private String name;
+    @SerializedName("url")
     private String ImageUrl;
-    private ArrayList<Template> templates;
+    @SerializedName("check")
+    private int check = 0;
 
-    public Template(int ID) {ImageID = ID;}
+    public Template(String name, String imageUrl) {
+        this.name = name;
+        ImageUrl = imageUrl;
+    }
 
     public Template(String imageUrl) {
         ImageUrl = imageUrl;
@@ -22,11 +28,16 @@ public class Template {
         ImageUrl = imageUrl;
     }
 
-    public ArrayList<Template> getCahtegories() {
-        return templates;
+    public String getName() {
+        return name;
     }
 
-    public void setCahtegories(ArrayList<Template> templates) {
-        this.templates = templates;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isSelected(){
+        if (this.check == 0) return false;
+        return true;
     }
 }
