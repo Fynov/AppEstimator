@@ -25,6 +25,7 @@ import com.fynov.equaleyes.appestimator.databinding.ActivityEstimatorBinding;
 import com.fynov.equaleyes.appestimator.ui.adapters.CategoryAdapter;
 import com.fynov.equaleyes.appestimator.utils.Callback;
 import com.fynov.equaleyes.appestimator.viewmodels.EstimatorViewModel;
+import com.fynov.equaleyes.appestimator.viewmodels.EstimatorViewModelFactory;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -43,8 +44,12 @@ public class    ActivityEstimator extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mEstimatorViewModel = ViewModelProviders.of(this).get(EstimatorViewModel.class);
-        mEstimatorViewModel.makeAPIcall(getIntent().getStringExtra("template_name"));
+
+        EstimatorViewModelFactory factory =
+                new EstimatorViewModelFactory(getIntent().getStringExtra("template_name"));
+
+        mEstimatorViewModel = ViewModelProviders.of(this, factory).get(EstimatorViewModel.class);
+        //mEstimatorViewModel = ViewModelProviders.of(this).get(EstimatorViewModel.class);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_estimator);
         mLayoutManagaer = new LinearLayoutManager(this);

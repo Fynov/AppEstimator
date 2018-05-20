@@ -19,20 +19,14 @@ import retrofit2.Response;
 public class EstimatorViewModel extends ViewModel {
     private APIService service;
     private MutableLiveData<ArrayList<Category>> mCategoryList = new MutableLiveData<>();
+    private String mTemplateName;
 
-    public EstimatorViewModel() {
-
-    }
-
-    public LiveData<ArrayList<Category>> getCategoryList() {
-        return mCategoryList;
-    }
-
-    public void makeAPIcall(final String templateName){
+    public EstimatorViewModel(final String templateName) {
         final ArrayList<Category> catList = new ArrayList<>();
+        mTemplateName = templateName;
         service = RetrofitClient.getClient("http://estimateapi.pythonanywhere.com/").create(APIService.class);
 
-        service.getFeatures(templateName)
+        service.getFeatures(mTemplateName)
                 .enqueue(new Callback<List<Category>>() {
                     @Override
                     public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
@@ -40,7 +34,7 @@ public class EstimatorViewModel extends ViewModel {
                         for (Category cat: catList) {
                             cat.setTime(0.0);
                             for (Feature feat: cat.getFeatures()) {
-                                if (templateName.isEmpty())
+                                if (mTemplateName.isEmpty())
                                     feat.setSelected(false);
                                 else
                                     feat.setSelected(feat.getTemplate().get(0).isSelected());
@@ -54,5 +48,9 @@ public class EstimatorViewModel extends ViewModel {
                         //TODO: Error message, don't know what view to input for snackbar. Snackbar.make(, "API is unavailible.", Snackbar.LENGTH_SHORT);
                     }
                 });
+    }
+
+    public LiveData<ArrayList<Category>> getCategoryList() {
+        return mCategoryList;
     }
 }
