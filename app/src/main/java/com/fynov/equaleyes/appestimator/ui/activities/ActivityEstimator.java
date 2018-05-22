@@ -60,7 +60,7 @@ public class    ActivityEstimator extends AppCompatActivity {
                 updateView(categoryArrayList);
             }
         };
-        mAdapter = new CategoryAdapter(new ArrayList<Category>(), categoryCallback);
+        mAdapter = new CategoryAdapter(new ArrayList<Category>(), categoryCallback, this);
 
         binding.rvCategories.setLayoutManager(mLayoutManagaer);
         binding.rvCategories.setAdapter(mAdapter);

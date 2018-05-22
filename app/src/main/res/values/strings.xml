@@ -19,7 +19,13 @@
     <string name="title_activity_main2">Main2Activity</string>
 
     <string name="buttonText">Calculate</string>
+    <string name="buttonSendText">Send</string>
     <string name="button_background">Button orange background</string>
     <string name="total">Total Days</string>
     <string name="poweredBy">Powered By Equaleyes Ltd.</string>
+    <string name="totCost">Total cost</string>
+    <string name="hourlyRate">Houlry rate of dev. day is €€€/h</string>
+    <string name="PDFEmail">Get the estimation on your email in a PDF format.</string>
+    <string name="textEditEmail">Email address</string>
+    <string name="subscribeText">I would like to subscribe to updates and proposals from equaleyes Ltd.</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.fynov.equaleyes.appestimator.ui.adapters;
 
 import android.app.Activity;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,8 +25,10 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
     private ArrayList<Category> mArrayList;
     private Callback categoryCallback;
+    private Context context;
 
-    public CategoryAdapter(ArrayList<Category> categories, Callback categoryCallback) {
+    public CategoryAdapter(ArrayList<Category> categories, Callback categoryCallback, Context context) {
+        this.context = context;
         mArrayList = categories;
         this.categoryCallback = categoryCallback;
     }
@@ -41,7 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
     public void onBindViewHolder(CategoryViewHolder holder, int position) {
         //final Currency trenutni = all.getCurrency(position);
         Category category = mArrayList.get(position);
-        holder.bind(category, categoryCallback);
+        holder.bind(category, categoryCallback, context);
     }
 
     @Override
