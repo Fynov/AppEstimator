@@ -23,7 +23,7 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder {
         mBinding = binding;
     }
 
-    public void bind(@NonNull final Category category, final Callback categoryCallback, final Context context) {
+    public void bind(@NonNull final Category category, final Callback categoryCallback) {
         Callback callback = new Callback() {
             @Override
             public void onFeatureSelectionChanged() {
@@ -46,10 +46,6 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder {
                     mBinding.rvFeatures.setVisibility(View.GONE);
                 else
                     mBinding.rvFeatures.setVisibility(View.VISIBLE);
-
-                Intent intent = new Intent(context, ActivitySummary.class);
-                intent.putExtra("category_name", category.getName());
-                context.startActivity(intent);
             }
         });
     }

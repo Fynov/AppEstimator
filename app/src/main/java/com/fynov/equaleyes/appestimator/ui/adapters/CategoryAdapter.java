@@ -27,7 +27,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
     private Callback categoryCallback;
     private Context context;
 
-    public CategoryAdapter(ArrayList<Category> categories, Callback categoryCallback, Context context) {
+    public CategoryAdapter(ArrayList<Category> categories, Callback categoryCallback) {
         this.context = context;
         mArrayList = categories;
         this.categoryCallback = categoryCallback;
@@ -44,7 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
     public void onBindViewHolder(CategoryViewHolder holder, int position) {
         //final Currency trenutni = all.getCurrency(position);
         Category category = mArrayList.get(position);
-        holder.bind(category, categoryCallback, context);
+        holder.bind(category, categoryCallback);
     }
 
     @Override

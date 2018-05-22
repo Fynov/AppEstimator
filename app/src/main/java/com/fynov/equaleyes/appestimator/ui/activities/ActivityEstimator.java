@@ -2,6 +2,7 @@ package com.fynov.equaleyes.appestimator.ui.activities;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.support.annotation.Nullable;
@@ -60,12 +61,20 @@ public class    ActivityEstimator extends AppCompatActivity {
                 updateView(categoryArrayList);
             }
         };
-        mAdapter = new CategoryAdapter(new ArrayList<Category>(), categoryCallback, this);
+        mAdapter = new CategoryAdapter(new ArrayList<Category>(), categoryCallback);
 
         binding.rvCategories.setLayoutManager(mLayoutManagaer);
         binding.rvCategories.setAdapter(mAdapter);
         binding.toolbar.setTitle(R.string.app_name);
         tvTotal = binding.getRoot().findViewById(R.id.tvTotal);
+
+        binding.buttonView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), ActivitySummary.class);
+                getBaseContext().startActivity(intent);
+            }
+        });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             binding.textView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
@@ -84,6 +93,12 @@ public class    ActivityEstimator extends AppCompatActivity {
             }
         };
         mEstimatorViewModel.getCategoryList().observe(this, categoryObserver);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAdapter.setItems(categoryArrayList);
     }
 
     public void updateView(ArrayList<Category> categoryList){
