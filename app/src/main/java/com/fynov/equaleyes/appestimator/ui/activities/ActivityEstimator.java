@@ -30,6 +30,7 @@ import com.fynov.equaleyes.appestimator.viewmodels.EstimatorViewModelFactory;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class    ActivityEstimator extends AppCompatActivity {
     private ActivityEstimatorBinding binding;
@@ -46,7 +47,7 @@ public class    ActivityEstimator extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        EstimatorViewModelFactory factory =
+        final EstimatorViewModelFactory factory =
                 new EstimatorViewModelFactory(getIntent().getStringExtra("template_name"));
 
         mEstimatorViewModel = ViewModelProviders.of(this, factory).get(EstimatorViewModel.class);
@@ -71,7 +72,16 @@ public class    ActivityEstimator extends AppCompatActivity {
         binding.buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String idList = "";
+                for (Category cat: categoryArrayList) {
+                    for (Feature feat: cat.getFeatures()) {
+                        if (feat.isSelected())
+                            idList += Integer.toString(feat.getId()) + ",";
+                    }
+                }
+                idList = idList.substring(0, idList.length()-1);
                 Intent intent = new Intent(getBaseContext(), ActivitySummary.class);
+                intent.putExtra("idList", idList);
                 getBaseContext().startActivity(intent);
             }
         });

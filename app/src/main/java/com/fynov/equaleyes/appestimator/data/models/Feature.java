@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Feature {
     @SerializedName("id")
-    private String id;
+    private int id;
     @SerializedName("name")
     private String name;
     private String description;
@@ -18,7 +18,7 @@ public class Feature {
     @SerializedName("template")
     private List<Template>template;
 
-    public Feature(String id, String name, String description, Integer price, Double time) {
+    public Feature(int id, String name, String description, Integer price, Double time) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -26,7 +26,7 @@ public class Feature {
         this.time = time;
     }
 
-    public Feature(String id, String name, String description, Integer price, Double time, Boolean selected) {
+    public Feature(int id, String name, String description, Integer price, Double time, Boolean selected) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -43,11 +43,11 @@ public class Feature {
         this.selected = selected;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
