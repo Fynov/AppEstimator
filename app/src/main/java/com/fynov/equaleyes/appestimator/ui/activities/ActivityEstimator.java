@@ -36,7 +36,7 @@ public class    ActivityEstimator extends AppCompatActivity {
     private EstimatorViewModel mEstimatorViewModel;
     private RecyclerView.LayoutManager mLayoutManagaer;
     CategoryAdapter mAdapter;
-    ArrayList<Category> categoryArrayList;
+    ArrayList<Category> categoryArrayList = new ArrayList<>();
 
     TextView tvTotal;
 

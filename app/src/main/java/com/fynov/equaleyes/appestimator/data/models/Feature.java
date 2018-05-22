@@ -6,12 +6,13 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 public class Feature {
+    @SerializedName("id")
     private String id;
     @SerializedName("name")
     private String name;
     private String description;
     private Integer price;
-    @SerializedName("time")
+    @SerializedName("total_time")
     private Double time;
     private Boolean selected = false;
     @SerializedName("template")

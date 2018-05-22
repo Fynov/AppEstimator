@@ -3,6 +3,7 @@ package com.fynov.equaleyes.appestimator.viewmodels;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.util.Log;
 
 import com.fynov.equaleyes.appestimator.data.api.APIService;
 import com.fynov.equaleyes.appestimator.data.api.RetrofitClient;
